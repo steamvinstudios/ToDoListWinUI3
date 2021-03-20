@@ -21,16 +21,16 @@ namespace ToDoListWinUI3
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class SettingsPage : Page
     {
-        public MainPage()
+        public SettingsPage()
         {
             this.InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.RootFrame.Navigate(typeof(SettingsPage));
+            MainWindow.RootFrame.GoBack();
         }
     }
 }
