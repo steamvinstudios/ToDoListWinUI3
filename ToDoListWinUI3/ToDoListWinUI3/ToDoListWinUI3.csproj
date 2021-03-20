@@ -8,11 +8,20 @@
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="MainPage.xaml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ProjectReunion" Version="0.5.0-prerelease" />
     <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.5.0-prerelease" />
     <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.5.0-prerelease" />
     <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

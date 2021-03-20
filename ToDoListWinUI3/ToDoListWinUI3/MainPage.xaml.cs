@@ -19,20 +19,13 @@ using Windows.Foundation.Collections;
 namespace ToDoListWinUI3
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class MainPage : Page
     {
-        public static Frame RootFrame { get; set; } = new Frame();
-        public MainWindow()
+        public MainPage()
         {
             this.InitializeComponent();
-        }
-
-        private void mainGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            (sender as Grid).Children.Add(RootFrame);
-            RootFrame.Navigate(typeof(MainPage));
         }
     }
 }
