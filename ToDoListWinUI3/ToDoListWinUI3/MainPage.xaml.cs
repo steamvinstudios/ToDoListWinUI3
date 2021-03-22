@@ -25,6 +25,7 @@ namespace ToDoListWinUI3
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public ViewModelTasks VM { get; set; } = new ViewModelTasks();
         public MainPage()
         {
             this.InitializeComponent();

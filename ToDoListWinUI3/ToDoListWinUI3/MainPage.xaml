@@ -39,8 +39,9 @@
                   Background="#88888888"
                   Margin="20"
                   Padding="8"
-                  CornerRadius="20"
-                  SelectionMode="None">
+                  CornerRadius="4"
+                  SelectionMode="None"
+                  ItemsSource="{x:Bind VM.Tasks, Mode=OneWay}">
             <ListView.ContextFlyout>
                 <MenuFlyout>
                     <MenuFlyoutItem Text="Пометить как важное" Icon="Favorite"/>
@@ -48,18 +49,22 @@
                     <MenuFlyoutItem Text="Удалить" Icon="Delete"/>
                 </MenuFlyout>
             </ListView.ContextFlyout>
-            <ListViewItem Content="item 1"/>
-            <ListViewItem Content="item 2"/>
-            <ListViewItem Content="item 3"/>
-            <ListViewItem Content="item 4"/>
-            <ListViewItem Content="item 5"/>
-            <ListViewItem Content="item 6"/>
-            <ListViewItem Content="item 7"/>
-            <ListViewItem Content="item 8"/>
-            <ListViewItem Content="item 9"/>
-            <ListViewItem Content="item 10"/>
-            <ListViewItem Content="item 11"/>
-            <ListViewItem Content="item 12"/>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:ModelTask">
+                    <StackPanel Orientation="Horizontal"
+                                Background="#88888888"
+                                Margin="1"
+                                Padding="20"
+                                CornerRadius="2">
+                        <CheckBox IsChecked="{x:Bind isDone}"
+                                  Content="выполнено"/>
+                        <StackPanel Padding="20">
+                            <TextBlock Text="{x:Bind Title}" FontSize="16"/>
+                            <TextBlock Text="{x:Bind Body}" FontSize="12"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>
