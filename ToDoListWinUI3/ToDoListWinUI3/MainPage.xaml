@@ -33,7 +33,7 @@
                             
                             <TextBlock Text="Нажмите для перехода на страницу настроек"
                                            TextWrapping="WrapWholeWords" 
-                                           FontSize="16"/>
+                                           FontSize="12"/>
                             <TextBlock Text="🧭" FontSize="128" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </ToolTip>
@@ -49,7 +49,7 @@
         </StackPanel>
         <ListView Grid.Row="1"
                   Header="Список задач"
-                  Background="#88888888"
+                  Background="#88CCCCCC"
                   Margin="20"
                   Padding="8"
                   CornerRadius="4"
@@ -65,7 +65,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:ModelTask">
                     <StackPanel Orientation="Horizontal"
-                                Background="#88888888"
+                                Background="#88FFFFFF"
                                 Margin="1"
                                 Padding="20"
                                 CornerRadius="2">
@@ -81,11 +81,53 @@
         </ListView>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="20">
             <TextBox Header="Имя задачи"
-                     HorizontalAlignment="Stretch"
-                     ToolTipService.ToolTip="Задайте заголовок вашей задачи"/>
+                     HorizontalAlignment="Stretch">
+                <ToolTipService.ToolTip>
+                    <ToolTip>
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Название задачи"
+                                       FontSize="20"
+                                       FontWeight="Bold"/>
+                            <TextBlock Text="Это основная характеристика задачи"
+                                       FontSize="12"
+                                       TextWrapping="Wrap"/>
+                            <StackPanel Background="#DDDDDDDD"
+                                        CornerRadius="4"
+                                        Padding="8">
+                                <TextBlock Text="Название"
+                                           FontSize="24"/>
+                                <TextBlock Text="----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+                                           TextWrapping="Wrap"
+                                           Foreground="#88888888"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
+            </TextBox>
             <TextBox Header="Подробности"
-                     HorizontalAlignment="Stretch"
-                     ToolTipService.ToolTip="Вы можете добавить подробное описание, либо вовсе обойтись без него"/>
+                     HorizontalAlignment="Stretch">
+                <ToolTipService.ToolTip>
+                    <ToolTip>
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="Описание задачи"
+                                       FontSize="20"
+                                       FontWeight="Bold"/>
+                            <TextBlock Text="Вы можете добавить подробное описание, либо вовсе обойтись без него"
+                                       FontSize="12"
+                                       TextWrapping="Wrap"/>
+                            <StackPanel Background="#DDDDDDDD"
+                                        CornerRadius="4"
+                                        Padding="8">
+                                <TextBlock Text="Название"
+                                           FontSize="24"
+                                           Foreground="#88888888"/>
+                                <TextBlock Text="----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+                                           TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
+            </TextBox>
             <Button Content="Добавить"
                     Margin="0 20"
                     HorizontalAlignment="Stretch" 
