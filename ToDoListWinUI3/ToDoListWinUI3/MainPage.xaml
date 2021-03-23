@@ -26,6 +26,18 @@
                    TextAlignment="Center"/>
         <Button Click="Button_Click"
                 HorizontalAlignment="Center">
+                <ToolTipService.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <TextBlock Text="Настройки" FontSize="20" FontWeight="Bold"/>
+                            
+                            <TextBlock Text="Нажмите для перехода на страницу настроек"
+                                           TextWrapping="WrapWholeWords" 
+                                           FontSize="16"/>
+                            <TextBlock Text="🧭" FontSize="128" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
             <StackPanel>
                 <TextBlock Text="🧪"
                                FontSize="24"
@@ -68,9 +80,17 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="20">
-            <TextBox Header="Имя задачи" HorizontalAlignment="Stretch"/>
-            <TextBox Header="Подробности" HorizontalAlignment="Stretch"/>
-            <Button Content="Добавить" Margin="0 20" HorizontalAlignment="Stretch" Style="{StaticResource AccentButtonStyle}"/>
+            <TextBox Header="Имя задачи"
+                     HorizontalAlignment="Stretch"
+                     ToolTipService.ToolTip="Задайте заголовок вашей задачи"/>
+            <TextBox Header="Подробности"
+                     HorizontalAlignment="Stretch"
+                     ToolTipService.ToolTip="Вы можете добавить подробное описание, либо вовсе обойтись без него"/>
+            <Button Content="Добавить"
+                    Margin="0 20"
+                    HorizontalAlignment="Stretch" 
+                    Style="{StaticResource AccentButtonStyle}"
+                    ToolTipService.ToolTip="Добавить в список задач"/>
         </StackPanel>
         
     </Grid>
