@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel>
             <TextBlock Text="Welcome Page"
@@ -66,5 +67,11 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="20">
+            <TextBox Header="Имя задачи" HorizontalAlignment="Stretch"/>
+            <TextBox Header="Подробности" HorizontalAlignment="Stretch"/>
+            <Button Content="Добавить" Margin="0 20" HorizontalAlignment="Stretch" Style="{StaticResource AccentButtonStyle}"/>
+        </StackPanel>
+        
     </Grid>
 </Page>
