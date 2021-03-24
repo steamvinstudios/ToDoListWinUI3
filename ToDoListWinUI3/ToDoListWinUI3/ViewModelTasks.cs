@@ -4,11 +4,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Windows.Graphics.Display;
 
 namespace ToDoListWinUI3
 {
     public class ViewModelTasks
     {
+        public ICommand UpdateData;
+        public ICommand ReadData;
+        public ViewModelTasks()
+        {
+            UpdateData = new TaskCommand(() => { /* Write data */ });
+            ReadData = new TaskCommand(() => { /* Read data */ });
+        }
         public ObservableCollection<ModelTask> Tasks { get; set; } = new ObservableCollection<ModelTask>()
         {
             new ModelTask() { Title = "This is the title 1", Body = "Some text about a task 1", isDone = true },
