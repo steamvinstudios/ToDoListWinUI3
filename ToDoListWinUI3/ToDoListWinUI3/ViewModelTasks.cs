@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Graphics.Display;
+using ToDoListWinUI3;
+using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace ToDoListWinUI3
 {
-    public class ViewModelTasks
+    public class ViewModelTasks : ViewModelBase
     {
-        public ICommand UpdateData;
-        public ICommand ReadData;
         public ViewModelTasks()
         {
-            UpdateData = new TaskCommand(() => { /* Write data */ });
-            ReadData = new TaskCommand(() => { /* Read data */ });
+
         }
         public ObservableCollection<ModelTask> Tasks { get; set; } = new ObservableCollection<ModelTask>()
         {
@@ -28,5 +28,34 @@ namespace ToDoListWinUI3
             new ModelTask() { Title = "This is the title 6", Body = "Some text about a task 6", isDone = true },
             new ModelTask() { Title = "This is the title 7", Body = "Some text about a task 7", isDone = false },
         };
+
+        private string taskDescription;
+        public string TaskDescription { get => taskDescription; set => SetProperty(ref taskDescription, value); }
+        private string taskTitle;
+        public string TaskTitle { get => taskTitle; set => SetProperty(ref taskTitle, value); }
+
+        private ICommand addTaskCommand;
+        public ICommand AddTaskCommand => addTaskCommand ??= new TaskCommand(AddTask);
+
+        private void AddTask()
+        {
+            Debug.WriteLine("Работает добавление");
+            if (!string.IsNullOrEmpty(TaskTitle))
+            {
+                Tasks.Add(new ModelTask() { Title = TaskTitle, Body = TaskDescription, isDone = false });
+            }
+        }
+
+        private ICommand removeLastTaskCommand;
+        public ICommand RemoveLastTaskCommand => removeLastTaskCommand ??= new TaskCommand(RemoveLastTask);
+
+        private void RemoveLastTask()
+        {
+            if (Tasks.Count != 0)
+            {
+                Debug.WriteLine("Работает удаление");
+                Tasks.RemoveAt(Tasks.Count - 1);
+            }
+        }
     }
 }

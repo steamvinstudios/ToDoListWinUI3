@@ -8,11 +8,15 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <local:ViewModelTasks/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel>
             <TextBlock Text="Welcome Page"
@@ -54,7 +58,7 @@
                   Padding="8"
                   CornerRadius="4"
                   SelectionMode="None"
-                  ItemsSource="{x:Bind VM.Tasks, Mode=OneWay}">
+                  ItemsSource="{Binding Tasks, Mode=TwoWay}">
             <ListView.ContextFlyout>
                 <MenuFlyout>
                     <MenuFlyoutItem Text="Пометить как важное" Icon="Favorite"/>
@@ -81,7 +85,8 @@
         </ListView>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="20">
             <TextBox Header="Имя задачи"
-                     HorizontalAlignment="Stretch">
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding TaskTitle, Mode=TwoWay}">
                 <ToolTipService.ToolTip>
                     <ToolTip>
                         <StackPanel Spacing="8">
@@ -105,7 +110,8 @@
                 </ToolTipService.ToolTip>
             </TextBox>
             <TextBox Header="Подробности"
-                     HorizontalAlignment="Stretch">
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding TaskDescription, Mode=TwoWay}">
                 <ToolTipService.ToolTip>
                     <ToolTip>
                         <StackPanel Spacing="8">
@@ -132,7 +138,11 @@
                     Margin="0 20"
                     HorizontalAlignment="Stretch" 
                     Style="{StaticResource AccentButtonStyle}"
-                    ToolTipService.ToolTip="Добавить в список задач"/>
+                    ToolTipService.ToolTip="Добавить в список задач"
+                    Command="{Binding AddTaskCommand}"/>
+            <Button Content="Удалить последний элемент из списка"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding RemoveLastTaskCommand}"/>
         </StackPanel>
         
     </Grid>
